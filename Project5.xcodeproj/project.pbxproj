@@ -11,8 +11,8 @@
 		C128ABAC1AB14054004E00B6 /* QuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C128ABAB1AB14054004E00B6 /* QuizViewController.m */; };
 		C128ABB31AB15B09004E00B6 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C128ABB01AB15B09004E00B6 /* DBManager.m */; };
 		C128ABB51AB16000004E00B6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C128ABB41AB16000004E00B6 /* libsqlite3.dylib */; };
-		C128ABBB1AB2603F004E00B6 /* moviedb.sql in Resources */ = {isa = PBXBuildFile; fileRef = C128ABBA1AB2603F004E00B6 /* moviedb.sql */; };
 		C128ABC01AB2DD33004E00B6 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C128ABBF1AB2DD33004E00B6 /* DataManager.m */; };
+		C128ABC91AB62CCE004E00B6 /* moviedb.sql in Resources */ = {isa = PBXBuildFile; fileRef = C128ABC81AB62CCE004E00B6 /* moviedb.sql */; };
 		C14FFF6A1AB03BE800D83EE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C14FFF691AB03BE800D83EE3 /* main.m */; };
 		C14FFF6D1AB03BE800D83EE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14FFF6C1AB03BE800D83EE3 /* AppDelegate.m */; };
 		C14FFF701AB03BE800D83EE3 /* Project5.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C14FFF6E1AB03BE800D83EE3 /* Project5.xcdatamodeld */; };
@@ -41,9 +41,9 @@
 		C128ABAE1AB15B09004E00B6 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		C128ABB01AB15B09004E00B6 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		C128ABB41AB16000004E00B6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		C128ABBA1AB2603F004E00B6 /* moviedb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; name = moviedb.sql; path = ../../../../../moviedb.sql; sourceTree = "<group>"; };
 		C128ABBE1AB2DD33004E00B6 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		C128ABBF1AB2DD33004E00B6 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		C128ABC81AB62CCE004E00B6 /* moviedb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = moviedb.sql; sourceTree = "<group>"; };
 		C14FFF641AB03BE800D83EE3 /* Project5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14FFF681AB03BE800D83EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C14FFF691AB03BE800D83EE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		C14FFF5B1AB03BE800D83EE3 = {
 			isa = PBXGroup;
 			children = (
-				C128ABBA1AB2603F004E00B6 /* moviedb.sql */,
+				C128ABC81AB62CCE004E00B6 /* moviedb.sql */,
 				C128ABB41AB16000004E00B6 /* libsqlite3.dylib */,
 				C14FFF661AB03BE800D83EE3 /* Project5 */,
 				C14FFF831AB03BE800D83EE3 /* Project5Tests */,
@@ -233,7 +233,7 @@
 				C14FFF761AB03BE800D83EE3 /* Main.storyboard in Resources */,
 				C14FFF7B1AB03BE800D83EE3 /* LaunchScreen.xib in Resources */,
 				C14FFF781AB03BE800D83EE3 /* Images.xcassets in Resources */,
-				C128ABBB1AB2603F004E00B6 /* moviedb.sql in Resources */,
+				C128ABC91AB62CCE004E00B6 /* moviedb.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
