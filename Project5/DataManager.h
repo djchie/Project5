@@ -29,11 +29,10 @@
 
 + (id)sharedManager;
 - (void)incrementQuizAttemptCount;
-- (void)addCorrectAnswerCount:(int)addCount;
-- (void)addIncorrectAnswerCount:(int)addCount;
-- (int)getQuizAttemptCount;
-- (int)getCorrectAnswerCount;
-- (int)getIncorrectAnswerCount;
-- (float)getAverageTimePerQuestion;
+- (void)addCorrectAnswerCount:(NSNumber*)addCount;
+- (void)addIncorrectAnswerCount:(NSNumber*)addCount;
+
+- (void)saveData;
+- (void)loadData;
 
 @end

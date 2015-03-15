@@ -33,26 +33,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Quiz!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5Z-IX-hIr">
-                                <rect key="frame" x="199" y="137" width="205.5" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-l1-FHQ">
-                                <rect key="frame" x="158" y="219" width="287" height="148"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="287" id="98Y-xu-J2c"/>
-                                    <constraint firstAttribute="height" constant="148" id="T2H-bc-9NJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Take the Quiz">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="9ZR-IT-reM" kind="show" id="DJU-40-6X4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-6f-ifd">
                                 <rect key="frame" x="157" y="375" width="287" height="148"/>
                                 <constraints>
@@ -67,11 +47,31 @@
                                     <segue destination="MNa-3B-28u" kind="show" id="fYj-nv-7PI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Quiz!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5Z-IX-hIr">
+                                <rect key="frame" x="199" y="137" width="205.5" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-l1-FHQ">
+                                <rect key="frame" x="158" y="258" width="287" height="148"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="287" id="98Y-xu-J2c"/>
+                                    <constraint firstAttribute="height" constant="148" id="T2H-bc-9NJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Take the Quiz">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9ZR-IT-reM" kind="show" id="DJU-40-6X4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="h5Z-IX-hIr" secondAttribute="centerX" constant="-1.75" id="7Nf-7y-KUK"/>
-                            <constraint firstItem="wlR-6f-ifd" firstAttribute="top" secondItem="EF1-l1-FHQ" secondAttribute="bottom" constant="8" id="dS0-U7-h2K"/>
+                            <constraint firstItem="wlR-6f-ifd" firstAttribute="top" secondItem="EF1-l1-FHQ" secondAttribute="bottom" constant="-31" id="dS0-U7-h2K"/>
                             <constraint firstAttribute="centerY" secondItem="h5Z-IX-hIr" secondAttribute="centerY" constant="139" id="f93-yd-Blf"/>
                             <constraint firstAttribute="centerX" secondItem="EF1-l1-FHQ" secondAttribute="centerX" constant="-1.5" id="mVT-2e-3e3"/>
                             <constraint firstAttribute="centerX" secondItem="wlR-6f-ifd" secondAttribute="centerX" constant="-0.5" id="pOy-YT-364"/>

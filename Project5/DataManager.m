@@ -8,6 +8,11 @@
 
 #import "DataManager.h"
 
+NSString* const kQuizAttemptCount = @"kQuizAttemptCount";
+NSString* const kCorrectAnswerCount = @"kCorrectAnswerCount";
+NSString* const kIncorrectAnswerCount = @"kIncorrectAnswerCount";
+NSString* const kAverageTimePerQuestion = @"kAverageTimePerQuestion";
+
 @implementation DataManager
 
 @synthesize quizAttemptCount;
@@ -45,16 +50,44 @@
     quizAttemptCount = [NSNumber numberWithInt:(value + 1)];
 }
 
-- (void)addCorrectAnswerCount:(int)addCount
+- (void)addCorrectAnswerCount:(NSNumber*)addCount
 {
     int value = [correctAnswerCount intValue];
-    correctAnswerCount = [NSNumber numberWithInt:(value + addCount)];
+    int addValue = [addCount intValue];
+    correctAnswerCount = [NSNumber numberWithInt:(value + addValue)];
 }
 
-- (void)addIncorrectAnswerCount:(int)addCount
+- (void)addIncorrectAnswerCount:(NSNumber*)addCount
 {
     int value = [incorrectAnswerCount intValue];
-    incorrectAnswerCount = [NSNumber numberWithInt:(value + addCount)];
+    int addValue = [addCount intValue];
+    incorrectAnswerCount = [NSNumber numberWithInt:(value + addValue)];
+}
+
+- (void)saveData
+{
+//    int addValue = [quizAttemptCount intValue];
+//    quizAttemptCount = [NSNumber numberWithInt:(addValue + 25)];
+//
+//    // incrememnt this
+//    
+    [[NSUserDefaults standardUserDefaults] setObject:quizAttemptCount forKey:kQuizAttemptCount];
+    [[NSUserDefaults standardUserDefaults] setObject:correctAnswerCount forKey:kCorrectAnswerCount];
+    [[NSUserDefaults standardUserDefaults] setObject:incorrectAnswerCount forKey:kIncorrectAnswerCount];
+    [[NSUserDefaults standardUserDefaults] setObject:averageTimePerQuestion forKey:kAverageTimePerQuestion];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)loadData
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kQuizAttemptCount])
+    {
+        quizAttemptCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kQuizAttemptCount];
+        correctAnswerCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kCorrectAnswerCount];
+        incorrectAnswerCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kIncorrectAnswerCount];
+        averageTimePerQuestion = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kAverageTimePerQuestion];
+    }
 }
 
 @end

@@ -34,6 +34,11 @@
     self.averageTimePerQuestionLabel.text = [NSString stringWithFormat:@"%.02f seconds", [averageTimePerQuestion floatValue]];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -16,10 +16,10 @@
 @property (nonatomic, strong) DataManager *dataManager;
 @property (nonatomic) int correctAnswer;
 @property (nonatomic, strong) NSString* correctAnswerString;
-@property (nonatomic) int correctCount;
-@property (nonatomic) int incorrectCount;
-@property (nonatomic) NSTimer* timer;
-@property (nonatomic) int timeLeft;
+@property (nonatomic, strong) NSNumber* correctCount;
+@property (nonatomic, strong) NSNumber* incorrectCount;
+@property (nonatomic, strong) NSTimer* timer;
+@property (nonatomic, strong) NSNumber* timeLeft;
 @property (nonatomic) BOOL paused;
 
 @property (weak, nonatomic) IBOutlet UILabel *correctCountLabel;
@@ -29,8 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIView *pausedGameView;
 @property (weak, nonatomic) IBOutlet UIView *gameOverView;
 @property (weak, nonatomic) IBOutlet UILabel *averageTimePerQuestionLabel;
-
-- (void)loadData;
 
 - (IBAction)optionButtonPressed:(id)sender;
 
