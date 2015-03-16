@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSTimer* timer;
 @property (nonatomic, strong) NSNumber* timeLeft;
 @property (nonatomic) BOOL paused;
+@property (nonatomic, strong) NSString* option1String;
+@property (nonatomic, strong) NSString* option2String;
+@property (nonatomic, strong) NSString* option3String;
 
 @property (weak, nonatomic) IBOutlet UILabel *correctCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *incorrectCounterLabel;
@@ -31,5 +34,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *averageTimePerQuestionLabel;
 
 - (IBAction)optionButtonPressed:(id)sender;
+- (void)pauseGame;
 
 @end

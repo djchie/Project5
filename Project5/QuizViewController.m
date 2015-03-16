@@ -28,8 +28,14 @@
                                                                   action:@selector(quitButtonPressed)];
     self.navigationItem.leftBarButtonItem = quitButton;
 
-    [self newGame];
-
+//    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"kCurrentTimeLeft"])
+//    {
+//        [self resumeSession];
+//    }
+//    else
+//    {
+        [self newGame];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,6 +115,20 @@
     [self.dataManager setAverageTimePerQuestion:[NSNumber numberWithFloat:averageTimePerQuestion]];
 }
 
+- (void)removeCurrentSession
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentTimeLeft"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentCorrectCount"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentIncorrectCount"];
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentQuestion"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentCorrectAnswer"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentCorrectAnswerNumber"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentOption1"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentOption2"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kCurrentOption3"];
+}
+
 - (void)newGame
 {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTick) userInfo: nil repeats:YES];
@@ -128,7 +148,14 @@
     [self updateCorrectIncorrectCount];
     self.paused = NO;
 
-    [self generateQuestion];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"kCurrentTimeLeft"])
+    {
+        [self resumeSession];
+    }
+    else
+    {
+        [self generateQuestion];
+    }
 }
 
 - (void)pauseGame
@@ -561,6 +588,48 @@
             falseOption++;
         }
     }
+
+    self.option1String = option1;
+    self.option2String = option2;
+    self.option3String = option3;
+
+    [self saveSession];
+}
+
+ - (void)saveSession
+{
+    [self.dataManager setCurrentTimeLeft:self.timeLeft];
+    [self.dataManager setCurrentCorrectCount:self.correctCount];
+    [self.dataManager setCurrentIncorrectCount:self.incorrectCount];
+
+    [self.dataManager setCurrentQuestion:self.questionLabel.text];
+    [self.dataManager setCurrentCorrectAnswerNumber:[NSNumber numberWithInt:self.correctAnswer]];
+    [self.dataManager setCurrentCorrectAnswer:self.correctAnswerString];
+    [self.dataManager setCurrentOption1:self.option1String];
+    [self.dataManager setCurrentOption2:self.option2String];
+    [self.dataManager setCurrentOption3:self.option3String];
+}
+
+- (void)resumeSession
+{
+    self.timeLeft = self.dataManager.currentTimeLeft;
+    self.correctCount = self.dataManager.currentCorrectCount;
+    self.incorrectCount = self.dataManager.currentIncorrectCount;
+
+    self.questionLabel.text = self.dataManager.currentQuestion;
+    self.correctAnswer = [self.dataManager.currentCorrectAnswerNumber intValue];
+    self.correctAnswerString = self.dataManager.currentCorrectAnswer;
+    self.option1String = self.dataManager.currentOption1;
+    self.option2String = self.dataManager.currentOption2;
+    self.option3String = self.dataManager.currentOption3;
+
+    self.correctCountLabel.text = [NSString stringWithFormat:@"%i", [self.correctCount intValue]];
+    self.incorrectCounterLabel.text = [NSString stringWithFormat:@"%i", [self.incorrectCount intValue]];
+    self.navigationItem.title = [self timeFormatted:self.timeLeft];
+
+    [self loadOptions:self.option1String secondOption:self.option2String thirdOption:self.option3String withAnswer:self.correctAnswerString];
+
+    [self pauseGame];
 }
 
 - (NSArray *)loadResultsWithQuery:(NSString *)query
@@ -609,6 +678,8 @@
     }
     else if ([title isEqualToString:@"Quit"])
     {
+        [self removeCurrentSession];
+
         [self.navigationController popViewControllerAnimated:YES];
     }
 

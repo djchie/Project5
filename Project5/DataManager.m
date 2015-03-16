@@ -13,12 +13,34 @@ NSString* const kCorrectAnswerCount = @"kCorrectAnswerCount";
 NSString* const kIncorrectAnswerCount = @"kIncorrectAnswerCount";
 NSString* const kAverageTimePerQuestion = @"kAverageTimePerQuestion";
 
+NSString* const kCurrentTimeLeft = @"kCurrentTimeLeft";
+NSString* const kCurrentCorrectCount = @"kCurrentCorrectCount";
+NSString* const kCurrentIncorrectCount = @"kCurrentIncorrectCount";
+
+NSString* const kCurrentQuestion = @"kCurrentQuestion";
+NSString* const kCurrentCorrectAnswer = @"kCurrentCorrectAnswer";
+NSString* const kCurrentCorrectAnswerNumber = @"kCurrentCorrectAnswerNumber";
+NSString* const kCurrentOption1 = @"kCurrentOption1";
+NSString* const kCurrentOption2 = @"kCurrentOption2";
+NSString* const kCurrentOption3 = @"kCurrentOption3";
+
 @implementation DataManager
 
 @synthesize quizAttemptCount;
 @synthesize correctAnswerCount;
 @synthesize incorrectAnswerCount;
 @synthesize averageTimePerQuestion;
+
+@synthesize currentTimeLeft;
+@synthesize currentCorrectCount;
+@synthesize currentIncorrectCount;
+
+@synthesize currentQuestion;
+@synthesize currentCorrectAnswerNumber;
+@synthesize currentCorrectAnswer;
+@synthesize currentOption1;
+@synthesize currentOption2;
+@synthesize currentOption3;
 
 #pragma mark Singleton Methods
 
@@ -65,12 +87,7 @@ NSString* const kAverageTimePerQuestion = @"kAverageTimePerQuestion";
 }
 
 - (void)saveData
-{
-//    int addValue = [quizAttemptCount intValue];
-//    quizAttemptCount = [NSNumber numberWithInt:(addValue + 25)];
-//
-//    // incrememnt this
-//    
+{    
     [[NSUserDefaults standardUserDefaults] setObject:quizAttemptCount forKey:kQuizAttemptCount];
     [[NSUserDefaults standardUserDefaults] setObject:correctAnswerCount forKey:kCorrectAnswerCount];
     [[NSUserDefaults standardUserDefaults] setObject:incorrectAnswerCount forKey:kIncorrectAnswerCount];
@@ -87,6 +104,39 @@ NSString* const kAverageTimePerQuestion = @"kAverageTimePerQuestion";
         correctAnswerCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kCorrectAnswerCount];
         incorrectAnswerCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kIncorrectAnswerCount];
         averageTimePerQuestion = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kAverageTimePerQuestion];
+    }
+}
+
+- (void)saveCurrentGame
+{
+    [[NSUserDefaults standardUserDefaults] setObject:currentTimeLeft forKey:kCurrentTimeLeft];
+    [[NSUserDefaults standardUserDefaults] setObject:currentCorrectCount forKey:kCurrentCorrectCount];
+    [[NSUserDefaults standardUserDefaults] setObject:currentIncorrectCount forKey:kCurrentIncorrectCount];
+
+    [[NSUserDefaults standardUserDefaults] setObject:currentQuestion forKey:kCurrentQuestion];
+    [[NSUserDefaults standardUserDefaults] setObject:currentCorrectAnswerNumber forKey:kCurrentCorrectAnswerNumber];
+    [[NSUserDefaults standardUserDefaults] setObject:currentCorrectAnswer forKey:kCurrentCorrectAnswer];
+    [[NSUserDefaults standardUserDefaults] setObject:currentOption1 forKey:kCurrentOption1];
+    [[NSUserDefaults standardUserDefaults] setObject:currentOption2 forKey:kCurrentOption2];
+    [[NSUserDefaults standardUserDefaults] setObject:currentOption3 forKey:kCurrentOption3];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)loadCurrentGame
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kCurrentTimeLeft])
+    {
+        currentTimeLeft = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentTimeLeft];
+        currentCorrectCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentCorrectCount];
+        currentIncorrectCount = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentIncorrectCount];
+
+        currentQuestion = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentQuestion];
+        currentCorrectAnswerNumber = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentCorrectAnswerNumber];
+        currentCorrectAnswer = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentCorrectAnswer];
+        currentOption1 = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentOption1];
+        currentOption2 = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentOption2];
+        currentOption3 = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentOption3];
     }
 }
 

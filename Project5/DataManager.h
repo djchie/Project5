@@ -17,15 +17,33 @@
     NSNumber* averageTimePerQuestion;
 
     // For question persistency
+    NSNumber* currentTimeLeft;
+    NSNumber* currentCorrectCount;
+    NSNumber* currentIncorrectCount;
+
     NSString* currentQuestion;
-    int correctAnswer;
-    NSString* correctAnswerString;
+    NSNumber* currentCorrectAnswerNumber;
+    NSString* currentCorrectAnswer;
+    NSString* currentOption1;
+    NSString* currentOption2;
+    NSString* currentOption3;
 }
 
 @property (nonatomic, retain) NSNumber* quizAttemptCount;
 @property (nonatomic, retain) NSNumber* correctAnswerCount;
 @property (nonatomic, retain) NSNumber* incorrectAnswerCount;
 @property (nonatomic, retain) NSNumber* averageTimePerQuestion;
+
+@property (nonatomic, retain) NSNumber* currentTimeLeft;
+@property (nonatomic, retain) NSNumber* currentCorrectCount;
+@property (nonatomic, retain) NSNumber* currentIncorrectCount;
+
+@property (nonatomic, retain) NSString* currentQuestion;
+@property (nonatomic, retain) NSNumber* currentCorrectAnswerNumber;
+@property (nonatomic, retain) NSString* currentCorrectAnswer;
+@property (nonatomic, retain) NSString* currentOption1;
+@property (nonatomic, retain) NSString* currentOption2;
+@property (nonatomic, retain) NSString* currentOption3;
 
 + (id)sharedManager;
 - (void)incrementQuizAttemptCount;
@@ -34,5 +52,7 @@
 
 - (void)saveData;
 - (void)loadData;
+- (void)saveCurrentGame;
+- (void)loadCurrentGame;
 
 @end

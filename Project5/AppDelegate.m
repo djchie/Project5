@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "QuizViewController.h"
 #import "DataManager.h"
 
 @interface AppDelegate ()
@@ -22,7 +23,7 @@
 //    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
 //    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
 
-    [[DataManager sharedManager] loadData];
+    [[DataManager sharedManager] loadCurrentGame];
     
     return YES;
 }
@@ -30,6 +31,19 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+    UIViewController* mainVC = self.window.rootViewController;
+
+    if (mainVC.childViewControllers.count == 2)
+    {
+        UIViewController* quizVC = [mainVC.childViewControllers lastObject];
+
+        if ([quizVC isKindOfClass:[QuizViewController class]])
+        {
+            [(QuizViewController*)quizVC pauseGame];
+            [[DataManager sharedManager] saveCurrentGame];
+        }
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -40,6 +54,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 
+    [[DataManager sharedManager] loadCurrentGame];
     [[DataManager sharedManager] loadData];
 }
 
@@ -50,6 +65,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
+
+    UIViewController* mainVC = self.window.rootViewController;
+
+    if (mainVC.childViewControllers.count == 2)
+    {
+        UIViewController* quizVC = [mainVC.childViewControllers lastObject];
+
+        if ([quizVC isKindOfClass:[QuizViewController class]])
+        {
+            [(QuizViewController*)quizVC pauseGame];
+            [[DataManager sharedManager] saveCurrentGame];
+        }
+    }
 
     [[DataManager sharedManager] saveData];
     
